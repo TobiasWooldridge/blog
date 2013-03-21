@@ -1,0 +1,13 @@
+{% extends '::base.html.twig' %}
+
+{% block content %}
+
+<div class="page-header">
+    <h1><a href="{{ path('page_show', { 'slug': entity.slug }) }}">{{ entity.title }}</a></h1>
+</div>
+
+{{ entity.content|markdown }}
+
+{% endblock content %}
+
+{% block headline %}{{ entity.title }}{% endblock headline %}

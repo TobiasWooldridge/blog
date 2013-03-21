@@ -1,0 +1,173 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+    - { resource: config_sonata.yml }
+
+framework:
+    esi:             { enabled: true }
+    secret:          %secret%
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: %kernel.debug%
+    form:            true
+    csrf_protection: true
+    validation:      { enable_annotations: true }
+    templating:      { engines: ['twig'] } #assets_version: SomeVersionScheme
+    default_locale:  %locale%
+    trust_proxy_headers: false # Whether or not the Request object should trust proxy headers (X_FORWARDED_FOR/HTTP_CLIENT_IP)
+    trusted_proxies: ~
+    session:         ~
+
+# Twig Configuration
+twig:
+    debug:            %kernel.debug%
+    strict_variables: %kernel.debug%
+
+# Assetic Configuration
+assetic:
+    debug:          %kernel.debug%
+    use_controller: false
+    bundles:        [ MopaBootstrapBundle ]
+    java: /usr/bin/java
+    filters:
+        less:
+            node: /usr/local/bin/node
+            node_paths: [/usr/local/lib/node_modules/npm/node_modules/]
+            apply_to: "\.less$"
+        cssrewrite: ~
+        cssembed:
+            jar: %kernel.root_dir%/Resources/java/cssembed-0.4.5.jar
+            apply_to: "\.css$|\.less$"
+        yui_css:
+            jar: %kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar
+            apply_to: "\.css$"
+        yui_js:
+            jar: %kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver:   %database_driver%
+        host:     %database_host%
+        port:     %database_port%
+        dbname:   %database_name%
+        user:     %database_user%
+        password: %database_password%
+        charset:  UTF8
+        types:
+            json: Sonata\Doctrine\Types\JsonType
+
+    orm:
+        auto_generate_proxy_classes: %kernel.debug%
+        auto_mapping: true
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport: %mailer_transport%
+    host:      %mailer_host%
+    username:  %mailer_user%
+    password:  %mailer_password%
+    spool:     { type: memory }
+
+
+stof_doctrine_extensions:
+    orm:
+        default:
+            timestampable: true
+            sluggable: true
+            blameable: true
+
+mopa_bootstrap:
+    form:
+        show_legend: false
+        show_child_legend: false
+        error_type: block
+    navbar: true
+
+services:
+    tobias_blog.navbar_menu_builder:
+        class: Tobias\BlogBundle\Menu\NavbarMenuBuilder
+        scope: request
+        arguments: [ '@knp_menu.factory' ]
+
+    tobias_blog.navbar_main_menu:
+        class: Knp\Menu\MenuItem
+        factory_service: tobias_blog.navbar_menu_builder
+        factory_method: createMainMenu
+        arguments: [ '@request' ]
+        scope: request
+        tags:
+            - { name: knp_menu.menu, alias: main }
+
+    tobias_blog.navbar:
+        class: '%mopa_bootstrap.navbar.generic%'
+        scope: request
+        arguments:
+            - { rightmenu: @tobias_blog.navbar_main_menu= }
+            - {}
+            - { title: "tobias.wooldridge.id.au", titleRoute: "homepage", fixedTop: true, isFluid: false }
+        tags:
+            - { name: mopa_bootstrap.navbar, alias: frontendNavbar }
+
+
+kwattro_markdown:
+    renderer : html
+    render_class: ~
+    extensions:
+        no_intra_emphasis: false
+        tables: true
+        fenced_code_blocks: true
+        autolink: true
+        strikethrough: true
+        lax_html_blocks: false
+        space_after_headers: true
+        superscript: false
+    flags:
+        filter_html: false
+        no_images: false
+        no_links: false
+        no_styles: false
+        safe_links_only: false
+        with_toc_data: false
+        hard_wrap: false
+        xhtml: false
+
+tobias_compound_feed:
+    display_posts: 20
+    feeds:
+        github:
+            slug: github
+            name: Github
+            feed_controller: ~
+        blog:
+            slug: blog
+            name: Blog
+            feed_controller: ~
+        twitter:
+            slug: twitter
+            name: Twitter
+            feed_controller: ~
+
+
+
+varspool_pygments:
+    bin:     /usr/bin/pygmentize
+    lexer_arguments:
+        linenos: true
+
+knp_disqus:
+    api_key: %knp_disqus.api_key%
+    forums:
+        blog:
+            shortname: %knp_disqus.blog.shortname%
+
+knp_paginator:
+    page_range: 5                      # default page range used in pagination control
+    default_options:
+        page_name: page                # page query parameter name
+        sort_field_name: sort          # sort field query parameter name
+        sort_direction_name: direction # sort direction query parameter name
+        distinct: true                 # ensure distinct results, useful when ORM queries are using GROUP BY statements
+    template:
+        pagination: :Pagination:sliding.html.twig     # sliding pagination controls template
+        sortable: KnpPaginatorBundle:Pagination:sortable_link.html.twig # sort link template

@@ -1,0 +1,17 @@
+{% extends '::base.html.twig' %}
+
+{% block content %}
+<div class="page-header">
+    <h1>{{ status_code }} {{ status_text }}</h1>
+</div>
+
+<p>When you loaded this page, something apparently went wrong internally.</p>
+
+<p>If you suspect this page was shown in error, feel free to e-mail me at tobias@wooldridge.id.au and let me know what you were doing when this error occurred.</p>
+
+<p>Apologies if this has caused you any inconvenience</p>
+
+{% endblock content %}
+
+
+{% block headline %}{{ status_code }} {{ status_text }}{% endblock headline %}

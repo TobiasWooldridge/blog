@@ -1,0 +1,35 @@
+{% extends '::base.html.twig' %}
+
+{% block content %}
+{% for article in pagination %}
+  {{ render_esi(url('article_render_stub', { 'created_slug': article.createdSlug,  'slug': article.slug })) }}
+
+  {% if article.content != null %}
+  <p><a class="continued" href="{{ path('article_show', { 'created_slug': article.createdSlug,  'slug': article.slug }) }}">Read more</a></p>
+  {% endif %}
+
+  <div class="navbar navbar-inverse">
+  	<div class="navbar-inner">
+  		<div class="container">
+    		 	<ul class="nav">
+            <li><a class="continued" href="{{ path('article_show', { 'created_slug': article.createdSlug,  'slug': article.slug }) }}">View article</a></li>
+     	    </ul>
+          <ul class="nav pull-right">
+            <li><a href="{{ path('article_show', { 'created_slug': article.createdSlug,  'slug': article.slug }) }}#comments">View comments <i class="icon-comment"></i></a></li>
+          </ul>
+  		</div>
+  	</div>
+  </div>
+
+  {% if article != loop.last %}
+  <hr />
+  {% endif %}
+
+{% endfor %}
+
+<div class="navigation">
+    {{ knp_pagination_render(pagination) }}
+</div>
+{% endblock content %}
+
+{% block headline %}Blog{% endblock headline %}

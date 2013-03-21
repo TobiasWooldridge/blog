@@ -1,0 +1,18 @@
+{% extends '::base.html.twig' %}
+
+{% block content %}
+
+{{ render_esi(url('article_render_stub', { 'created_slug': article.createdSlug,  'slug': article.slug })) }}
+
+<span id="body"></span>
+{{ render_esi(url('article_render_body', { 'created_slug': article.createdSlug,  'slug': article.slug })) }}
+
+<hr />
+
+<span id="comments"></span>
+{{ render_esi(url('article_render_comments', { 'created_slug': article.createdSlug,  'slug': article.slug })) }}
+
+{% endblock content %}
+
+
+{% block headline %}{{ article.title }}{% endblock headline %}

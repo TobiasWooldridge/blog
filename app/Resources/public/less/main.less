@@ -1,0 +1,35 @@
+@import "../../../../vendor/mopa/bootstrap-bundle/Mopa/Bundle/BootstrapBundle/Resources/public/less/mopabootstrapbundle.less";
+@import "./bootswatch.less";
+@import "./highlight.less";
+
+body { padding-top: 60px; }
+
+.pub-detail { font-size: 0.9em; color: @grayLight; }
+.copy { font-size: 0.9em; text-align: center; }
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+  color: inherit;
+}
+
+small { color: @gray; }
+small time { color: @grayDark; }
+
+table.highlighttable { border: 0; }
+table.highlighttable td { padding: 0; }
+table.highlighttable td.linenos { border-right: 0; }
+table.highlighttable td.code { border-left: 0; }
+
+#disqus_thread { min-height: 327px; }
+
+div.pagination { text-align: center; }
+
+code, pre { border-radius: 0; border: 0; max-width: 800px;}
+
+@import "../../../../vendor/mopa/bootstrap-bundle/Mopa/Bundle/BootstrapBundle/Resources/bootstrap/less/responsive.less";
+@import "./variables.less";
+
+@media (max-width: 917px) {
+  .linenos {
+    display: none !important;
+  }
+}

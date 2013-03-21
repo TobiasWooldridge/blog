@@ -1,0 +1,78 @@
+{% from 'MopaBootstrapBundle::flash.html.twig' import session_flash %}
+{% extends 'MopaBootstrapBundle::base.html.twig' %}
+
+{% block title %}{% if block('headline') %}{{ block('headline') }} - {% endif %}tobias.wooldridge.id.au{% endblock %}
+
+{% block head_style %}
+{% stylesheets
+    '../app/Resources/public/less/main.less'
+%}
+<link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+{% endstylesheets %}
+{% endblock head_style %}
+
+{% block container %}
+<div class="{% block container_class %}container{% endblock container_class %}">
+    {% block header %}
+    {% endblock header %}
+
+    <div class="container-fluid">
+        {# <div class="row-fluid">
+            <div class="span9"> #}
+                <div class="content">
+                    {% block flashes %}
+                    {% if app.session.flashbag.peekAll|length > 0 %}
+                    <div class="row">
+                        <div class="span12">
+                        {{ session_flash() }}
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endblock flashes %}
+                    
+                    {% block content %}
+                    {% endblock content %}
+                </div>
+            {#
+            </div>
+            <div class="span3">
+                <h2>Semi-Automatic Microblog</h2>
+                {% render url('feed_render_compound') %}
+            </div>
+        </div>
+            #}
+    </div>
+    <footer class="footer">
+        <div class="container">
+            {% block footer %}
+            <hr />
+            <p class="copy">&copy; <a href="{{ path('page_show', {'slug': 'about-me'}) }}">Tobias Wooldridge</a> {{ date()|date('Y') }}</p>
+            {% endblock footer %}
+        </div>
+    </footer>
+</div>
+{% endblock container %}
+
+
+    {% block foot_script %}
+
+    {% javascripts
+        'http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'
+        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-transition.js'
+        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-modal.js'
+        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-dropdown.js'
+        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-scrollspy.js'
+        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-tab.js'
+        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-tooltip.js'
+        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-popover.js'
+        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-alert.js'
+        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-button.js'
+        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-collapse.js'
+        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-carousel.js'
+        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-typeahead.js'
+        '@MopaBootstrapBundle/Resources/public/js/mopabootstrap-collection.js'
+        '@MopaBootstrapBundle/Resources/public/js/mopabootstrap-subnav.js'
+    %}
+<script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+{% endblock foot_script %}

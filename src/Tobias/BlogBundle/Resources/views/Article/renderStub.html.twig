@@ -1,0 +1,8 @@
+<div class="page-header">
+    <h1><a href="{{ path('article_show', { 'created_slug': article.createdSlug,  'slug': article.slug }) }}">{{ article.title }}</a><br/>
+    <small>
+	    {{ article.created|date_tag("l, j F Y") }}{# {% if article.created != article.updated %} (updated {{ article.updated|date_tag("l, j F Y") }}){% endif %} #}
+	</small></h1>
+</div>
+
+{{ article.summary|markdown }}
