@@ -132,24 +132,6 @@ kwattro_markdown:
         hard_wrap: false
         xhtml: false
 
-tobias_compound_feed:
-    display_posts: 20
-    feeds:
-        github:
-            slug: github
-            name: Github
-            feed_controller: ~
-        blog:
-            slug: blog
-            name: Blog
-            feed_controller: ~
-        twitter:
-            slug: twitter
-            name: Twitter
-            feed_controller: ~
-
-
-
 varspool_pygments:
     bin:     /usr/bin/pygmentize
     lexer_arguments:
