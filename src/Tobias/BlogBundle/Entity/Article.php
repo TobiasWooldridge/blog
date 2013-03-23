@@ -12,6 +12,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 * @ORM\Table()
 * @ORM\Entity
 * @ORM\HasLifecycleCallbacks()
+* @ORM\Entity(repositoryClass="Tobias\BlogBundle\Repository\Article")
 */
 class Article
 {
@@ -84,6 +85,12 @@ class Article
       * @ORM\ManyToOne(targetEntity="Application\Sonata\UserBundle\Entity\User")
       */
     private $updatedBy;
+
+    /**
+     * @ORM\Column(type="string", length=32)
+     */
+    private $hash = "";
+
 
     /**
      * Get id
@@ -244,5 +251,88 @@ class Article
     public function __toString()
     {
         return $this->getTitle();
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Article
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    
+        return $this;
+    }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     * @return Article
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+    
+        return $this;
+    }
+
+    /**
+     * Set updated
+     *
+     * @param \DateTime $updated
+     * @return Article
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+    
+        return $this;
+    }
+
+    /**
+     * Set createdBy
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $createdBy
+     * @return Article
+     */
+    public function setCreatedBy(\Application\Sonata\UserBundle\Entity\User $createdBy = null)
+    {
+        $this->createdBy = $createdBy;
+    
+        return $this;
+    }
+
+    /**
+     * Set updatedBy
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $updatedBy
+     * @return Article
+     */
+    public function setUpdatedBy(\Application\Sonata\UserBundle\Entity\User $updatedBy = null)
+    {
+        $this->updatedBy = $updatedBy;
+    
+        return $this;
+    }
+
+    /**
+     * Update hash
+     *
+     * @ORM\PrePersist
+     */
+    public function updateHash()
+    {
+        $this->hash = md5($this.getSummary() . $this->getContent() . mt_rand());
+    }
+
+    /**
+     * Get hash
+     */
+    public function getHash()
+    {
+        return $this->hash;
     }
 }

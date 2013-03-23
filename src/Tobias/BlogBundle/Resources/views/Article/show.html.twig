@@ -2,15 +2,15 @@
 
 {% block content %}
 
-{{ render_esi(url('article_render_stub', { 'created_slug': article.createdSlug,  'slug': article.slug })) }}
+{{ render_esi(url('article_render_stub', { 'id': article.id,  'hash': article.hash })) }}
 
 <span id="body"></span>
-{{ render_esi(url('article_render_body', { 'created_slug': article.createdSlug,  'slug': article.slug })) }}
+{{ render_esi(url('article_render_body', { 'id': article.id,  'hash': article.hash })) }}
 
 <hr />
 
 <span id="comments"></span>
-{{ render_esi(url('article_render_comments', { 'created_slug': article.createdSlug,  'slug': article.slug })) }}
+{{ render_esi(url('article_render_comments', { 'id': article.id,  'hash': article.hash })) }}
 
 {% endblock content %}
 
