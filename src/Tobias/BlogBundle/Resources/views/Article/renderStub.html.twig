@@ -1,6 +1,6 @@
 <div class="page-header" itemscope itemtype="http://schema.org/Blog">
-    <h1 itemprop="name"><a href="{{ path('article_show', { 'created_slug': article.createdSlug,  'slug': article.slug }) }}" itemprop="url">{{ article.title }}</a><br/>
-    <small itemprop="dateCreated">{{ article.created|date_tag("l, j F Y") }}</small></h1>
+    <h1 itemprop="name"><a href="{{ path('article_show', { 'created_slug': article.createdSlug,  'slug': article.slug }) }}" itemprop="url" >{{ article.title }}</a></h1>
+    <p itemprop="dateCreated">{{ article.created|date_tag("l, j F Y") }}</p>
 </div>
 
 {{ article.summary|markdown }}

@@ -2,17 +2,19 @@
 @import "./bootswatch.less";
 @import "./highlight.less";
 
-body { padding-top: 60px; }
+body { background: #ddd; }
 
 .pub-detail { font-size: 0.9em; color: @grayLight; }
 .copy { font-size: 0.9em; text-align: center; }
 
-h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
-  color: inherit;
-}
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { color: inherit; }
 
-small { color: @gray; }
-small time { color: @grayDark; }
+h1 { font-size: 36px; line-height: 0.95em; margin-top: 0.7em; }
+
+.page-header { border: 0px none; margin-bottom: 10px; }
+.page-header time { font-size: 1.4em; color: @grayDark; }
+
+body > .container { padding-top: 50px; background: #fff; }
 
 table.highlighttable { border: 0; }
 table.highlighttable td { padding: 0; }

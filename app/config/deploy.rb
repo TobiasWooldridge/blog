@@ -14,8 +14,7 @@ role :db,        				domain, :primary => true       # This is where Symfony2 mig
 set :deploy_to,   				"/var/www/tobias.wooldridge.id.au"
 
 set :scm,         				:git
-set :repository,  				".git"
-set :deploy_via, 				:rsync_with_remote_cache
+set :repository,  				"git://github.com/TobiasWooldridge/blog.git"
 set :keep_releases, 				3
 
 
