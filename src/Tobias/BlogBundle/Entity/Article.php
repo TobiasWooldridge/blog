@@ -88,8 +88,9 @@ class Article
 
     /**
      * @ORM\Column(type="string", length=32)
+     * @Assert\NotNull()
      */
-    private $hash = "";
+    private $hash;
 
 
     /**
@@ -325,7 +326,7 @@ class Article
      */
     public function updateHash()
     {
-        $this->hash = md5($this->getTitle() $this->getSummary() . $this->getContent());
+        $this->hash = md5($this->getTitle() . $this->getSummary() . $this->getContent());
     }
 
     /**
