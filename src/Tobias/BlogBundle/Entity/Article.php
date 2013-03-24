@@ -325,7 +325,7 @@ class Article
      */
     public function updateHash()
     {
-        $this->hash = md5($this.getSummary() . $this->getContent() . mt_rand());
+        $this->hash = md5($this->getTitle() $this->getSummary() . $this->getContent());
     }
 
     /**
