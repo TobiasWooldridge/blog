@@ -1,0 +1,27 @@
+article:
+    pattern:   /
+    defaults:  { _controller: TobiasBlogBundle:Article:index }
+
+article_show:
+    pattern:   /blog/{createdSlug}/{slug}
+    defaults:  { _controller: TobiasBlogBundle:Article:show }
+
+article_show:
+    pattern:   /blog/{createdSlug}/{slug}
+    defaults:  { _controller: TobiasBlogBundle:Article:show }
+
+article_render_stub:
+    pattern:   /esi/blog/{id}/stub/{hash}
+    defaults:  { _controller: TobiasBlogBundle:Article:renderStub }
+
+article_render_body:
+    pattern:   /esi/blog/{id}/body/{hash}
+    defaults:  { _controller: TobiasBlogBundle:Article:renderBody }
+
+article_render_comments:
+    pattern:   /esi/blog/{id}/comments/{hash}
+    defaults:  { _controller: TobiasBlogBundle:Article:renderComments }
+
+page_show:
+    pattern:   /page/{slug}
+    defaults:  { _controller: TobiasBlogBundle:Page:show }

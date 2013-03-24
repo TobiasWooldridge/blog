@@ -10,14 +10,11 @@ use Tobias\BlogBundle\Entity\Page;
 
 /**
  * Page controller.
- *
  */
 class PageController extends Controller
 {
     /**
      * Finds and displays a Page entity.
-     *
-     * @Route("/page/{slug}", name="page_show")
      */
     public function showAction($slug)
     {

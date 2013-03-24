@@ -5,7 +5,6 @@ namespace Tobias\BlogBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Tobias\BlogBundle\Entity\Article;
 
 /**
@@ -16,8 +15,6 @@ class ArticleController extends Controller
 {
     /**
      * Lists all Article entities.
-     *
-     * @Route("/", name="article")
      */
     public function indexAction()
     {
@@ -38,8 +35,6 @@ class ArticleController extends Controller
 
     /**
      * Finds and displays a Article entity.
-     *
-     * @Route("/blog/{createdSlug}/{slug}", name="article_show")
      */
     public function showAction($createdSlug, $slug)
     {
@@ -61,8 +56,6 @@ class ArticleController extends Controller
 
     /**
      * Finds and renders the stub of an Article entity.
-     *
-     * @Route("/esi/blog/{id}/stub/{hash}", name="article_render_stub")
      */
     public function renderStubAction($id, $hash)
     {
@@ -81,8 +74,6 @@ class ArticleController extends Controller
 
     /**
      * Finds and renders the remaining body of an Article entity.
-     *
-     * @Route("/esi/blog/{id}/body/{hash}", name="article_render_body")
      */
     public function renderBodyAction($id, $hash)
     {
@@ -102,7 +93,6 @@ class ArticleController extends Controller
     /**
      * Renders comments for an Article entity.
      *
-     * @Route("/esi/blog/{id}/comments/{hash}", name="article_render_comments")
      */
     public function renderCommentsAction($id, $hash)
     {

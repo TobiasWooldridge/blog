@@ -3,7 +3,7 @@ homepage:
     defaults: { _controller: TobiasBlogBundle:Article:index }
 
 tobias_blog:
-    resource: "@TobiasBlogBundle/Controller/"
+    resource: "@TobiasBlogBundle/Resources/config/routing.yml"
     prefix:   /
 
 _sonata:
