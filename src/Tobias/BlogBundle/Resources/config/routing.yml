@@ -22,6 +22,12 @@ article_render_comments:
     pattern:   /esi/blog/{id}/comments/{hash}
     defaults:  { _controller: TobiasBlogBundle:Article:renderComments }
 
+article_feed:
+    pattern:   /blog/feed.{_format}
+    defaults:  { _controller: TobiasBlogBundle:Article:feed }
+    requirements:
+        _format:  atom|rss
+
 page_show:
     pattern:   /page/{slug}
     defaults:  { _controller: TobiasBlogBundle:Page:show }

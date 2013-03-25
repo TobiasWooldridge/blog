@@ -153,3 +153,12 @@ knp_paginator:
     template:
         pagination: :Pagination:sliding.html.twig     # sliding pagination controls template
         sortable: KnpPaginatorBundle:Pagination:sortable_link.html.twig # sort link template
+
+eko_feed:
+    feeds:
+        article:
+            title:       "Blog - tobias.wooldridge.id.au"
+            description: "Latest articles"
+            link:        'http://tobias.wooldridge.id.au/'
+            encoding:    'utf-8'
+            author:      'Tobias Wooldridge' # Only required for Atom feeds

@@ -3,6 +3,7 @@
 namespace Tobias\BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Eko\FeedBundle\Item\Writer\RoutedItemInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
 
@@ -14,7 +15,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 * @ORM\HasLifecycleCallbacks()
 * @ORM\Entity(repositoryClass="Tobias\BlogBundle\Repository\Article")
 */
-class Article
+class Article implements RoutedItemInterface
 {
     /**
       * @var integer
@@ -335,5 +336,68 @@ class Article
     public function getHash()
     {
         return $this->hash;
+    }
+
+    /**
+     * This method returns feed item title
+     *
+     * @return string
+     */
+    public function getFeedItemTitle()
+    {
+        return $this->getTitle();
+    }
+
+    /**
+     * This method returns feed item description (or content)
+     *
+     * @return string
+     */
+    public function getFeedItemDescription()
+    {
+        return $this->getSummary();
+    }
+
+    /**
+     * This method returns the name of the route
+     *
+     *
+     * @return string
+     */
+    public function getFeedItemRouteName()
+    {
+        return 'article_show';
+    }
+
+    /**
+     * This method returns the parameters for the route.
+     *
+     *
+     * @return array
+     */
+    public function getFeedItemRouteParameters()
+    {
+        return array('createdSlug' => $this->getCreatedSlug(), 'slug' => $this->getSlug());
+    }
+
+    /**
+     * This method returns the anchor to be appended on this item's url
+     *
+     *
+     * @return string The anchor, without the "#"
+     */
+    public function getFeedItemUrlAnchor()
+    {
+    	return $this->getSlug();
+    }
+
+    /**
+     * This method returns item publication date
+     *
+     * @return \DateTime
+     */
+    public function getFeedItemPubDate()
+    {
+        return $this->getCreated();
     }
 }

@@ -43,7 +43,8 @@
         "knplabs/knp-paginator-bundle": "v2.3",
         "knplabs/knp-components": "v1.1.2",
         "knplabs/knp-menu-bundle": "1.1.x-dev",
-        "knplabs/knp-menu": "1.1.x-dev"
+        "knplabs/knp-menu": "1.1.x-dev",
+        "eko/feedbundle": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [

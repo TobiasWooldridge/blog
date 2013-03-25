@@ -34,8 +34,11 @@ class AppKernel extends Kernel
             new Knp\Bundle\DisqusBundle\KnpDisqusBundle(),
             new Kwattro\MarkdownBundle\KwattroMarkdownBundle(),
             new Varspool\PygmentsBundle\VarspoolPygmentsBundle(),
+
+            new Eko\FeedBundle\EkoFeedBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Tobias\BlogBundle\TobiasBlogBundle(),
+
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

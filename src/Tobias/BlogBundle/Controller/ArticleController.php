@@ -6,6 +6,7 @@ namespace Tobias\BlogBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Tobias\BlogBundle\Entity\Article;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Article controller.
@@ -107,5 +108,20 @@ class ArticleController extends Controller
         $response->setSharedMaxAge(3600);
         
         return $response;
+    }
+
+    /**
+     * Article feed
+     *
+     * @return Response
+     */
+    public function feedAction($_format)
+    {
+        $articles = $this->getDoctrine()->getRepository('TobiasBlogBundle:Article')->findAll();
+
+        $feed = $this->get('eko_feed.feed.manager')->get('article');
+        $feed->addFromArray($articles);
+
+        return new Response($feed->render($_format));
     }
 }
