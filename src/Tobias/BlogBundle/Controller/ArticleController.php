@@ -29,7 +29,7 @@ class ArticleController extends Controller
         $pagination = $paginator->paginate($articleQuery, $this->get('request')->query->get('page', 1), 5);
 
         $response = $this->render('TobiasBlogBundle:Article:index.html.twig', array('pagination' => $pagination));
-        $response->setSharedMaxAge(60);
+        $response->setSharedMaxAge(15);
 
         return $response;
     }
@@ -50,7 +50,7 @@ class ArticleController extends Controller
             throw $this->createNotFoundException('Unable to find Article.');
 
         $response = $this->render('TobiasBlogBundle:Article:show.html.twig', array('article' => $article));
-        $response->setSharedMaxAge(60);
+        $response->setSharedMaxAge(15);
 
         return $response;
     }
@@ -117,11 +117,29 @@ class ArticleController extends Controller
      */
     public function feedAction($_format)
     {
-        $articles = $this->getDoctrine()->getRepository('TobiasBlogBundle:Article')->findAll();
+        $logger = $this->get('logger');
+        $logger->debug('Retrieving articles');
 
+
+        $em = $this->getDoctrine()->getManager();
+
+        $articles = $em->createQuery(
+            'SELECT a FROM TobiasBlogBundle:Article a ORDER BY a.created DESC'
+        )->setMaxResults(20)->getResult();
+
+
+        $logger->debug('Retrieving feed manager');
         $feed = $this->get('eko_feed.feed.manager')->get('article');
+
+        $logger->debug('Adding articles to feed manager');
         $feed->addFromArray($articles);
 
-        return new Response($feed->render($_format));
+        $logger->debug('Rendering feed');
+        
+
+        $response = new Response($feed->render($_format));
+        $response->setSharedMaxAge(600);
+        
+        return $response;
     }
 }
