@@ -7,8 +7,11 @@
     <parameters>
         <parameter key="tobias_blog.admin.article.class">Tobias\BlogBundle\Admin\ArticleAdmin</parameter>
         <parameter key="tobias_blog.admin.article.entity">Tobias\BlogBundle\Entity\Article</parameter>
+
         <parameter key="tobias_blog.admin.page.class">Tobias\BlogBundle\Admin\PageAdmin</parameter>
         <parameter key="tobias_blog.admin.page.entity">Tobias\BlogBundle\Entity\Page</parameter>
+
+        <parameter key="tobias_blog.twig.extension.blog.class">Tobias\BlogBundle\Twig\BlogExtension</parameter>
     </parameters>
 
     <services>
@@ -18,13 +21,15 @@
             <argument>%tobias_blog.admin.article.entity%</argument>
             <argument />
         </service>
+
         <service id="tobias_blog.admin.page" class="%tobias_blog.admin.page.class%">
             <tag name="sonata.admin" manager_type="orm" group="Blog" label="Pages" />
             <argument />
             <argument>%tobias_blog.admin.page.entity%</argument>
             <argument />
         </service>
-        <service id="tobias.twig.blog_extension" class="Tobias\BlogBundle\Twig\BlogExtension">
+
+        <service id="tobias.twig.blog_extension" class="%tobias_blog.twig.extension.blog.class%">
             <tag name="twig.extension" />
             <argument type="service" id="service_container" />
         </service>
