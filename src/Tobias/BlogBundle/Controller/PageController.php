@@ -3,29 +3,39 @@
 namespace Tobias\BlogBundle\Controller;
 
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Tobias\BlogBundle\Entity\Page;
+use JMS\DiExtraBundle\Annotation as DI;
 
 /**
  * Page controller.
  */
-class PageController extends Controller
+class PageController
 {
+	/**
+	 * @DI\Inject("doctrine.orm.entity_manager")
+	 * @var \Doctrine\ORM\EntityManager
+	 */
+    protected $em;
+
+	/**
+	 * @DI\Inject("templating")
+	 */
+    protected $templating;
+
     /**
      * Finds and displays a Page entity.
      */
     public function showAction($slug)
     {
-        $em = $this->getDoctrine()->getManager();
+        $page = $this->em->getRepository('TobiasBlogBundle:Page')->findOneBySlug($slug);
 
-        $page = $em->getRepository('TobiasBlogBundle:Page')->findOneBySlug($slug);
-
-        if (!$page)
+        if (!$page) {
             throw $this->createNotFoundException('Unable to find Page entity.');
+        }
 
-        $response = $this->render('TobiasBlogBundle:Page:show.html.twig', array('page' => $page));
+        $response = $this->templating->renderResponse('TobiasBlogBundle:Page:show.html.twig', array('page' => $page));
         $response->setSharedMaxAge(300);
 
         return $response;

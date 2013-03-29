@@ -3,7 +3,6 @@
 namespace Tobias\BlogBundle\Controller;
 
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Tobias\BlogBundle\Entity\Article;
 use Symfony\Component\HttpFoundation\Request;
@@ -71,8 +70,9 @@ class ArticleController
             ->setParameter('createdSlug', $createdSlug)
             ->getSingleResult();
 
-        if (!$article)
+        if (!$article) {
             throw $this->createNotFoundException('Unable to find Article.');
+        }
 
         $response = $this->templating->renderResponse('TobiasBlogBundle:Article:show.html.twig', array('article' => $article));
         $response->setSharedMaxAge(15);
@@ -87,8 +87,9 @@ class ArticleController
     {
         $article = $this->em->getRepository('TobiasBlogBundle:Article')->find($id);
 
-        if (!$article)
+        if (!$article) {
             throw $this->createNotFoundException('Unable to find Article.');
+        }
 
         $response = $this->templating->renderResponse('TobiasBlogBundle:Article:articleStub.html.twig', array('article' => $article));
         $response->setSharedMaxAge(7 * 24 * 3600);
@@ -103,8 +104,9 @@ class ArticleController
     {
         $article = $this->em->getRepository('TobiasBlogBundle:Article')->find($id);
 
-        if (!$article)
+        if (!$article) {
             throw $this->createNotFoundException('Unable to find Article.');
+        }
 
         $response = $this->templating->renderResponse('TobiasBlogBundle:Article:articleBody.html.twig', array('article' => $article));
         $response->setSharedMaxAge(7 * 24 * 3600);
@@ -120,8 +122,9 @@ class ArticleController
     {
         $article = $this->em->getRepository('TobiasBlogBundle:Article')->find($id);
 
-        if (!$article)
+        if (!$article) {
             throw $this->createNotFoundException('Unable to find Article.');
+        }
 
         $response = $this->templating->renderResponse('TobiasBlogBundle:Article:articleComments.html.twig', array('article' => $article));
         $response->setSharedMaxAge(3600);
