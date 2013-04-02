@@ -35,7 +35,7 @@ set :use_set_permissions,			true
 set :model_manager, 				"doctrine"
 set :app_path,    				"app"
 
-set :shared_children, 				[app_path + "/logs", "web/file"]
+set :shared_children, 				[app_path + "/logs", app_path + "/var", "web/file"]
 set :shared_files,      			[app_path + "/config/parameters.yml"]
 
 set :use_composer,				true
