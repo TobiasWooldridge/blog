@@ -5,9 +5,15 @@
 
 {% block head_style %}
 {% stylesheets
-    '../app/Resources/public/less/main.less'
+    '../app/Resources/public/less/metro/main.less'
 %}
-<link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+<link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen"/>
+{% endstylesheets %}
+
+{% stylesheets
+    '../app/Resources/public/less/geocities/main.less'
+%}
+<link href="{{ asset_url }}" type="text/css" rel="alternate stylesheet" media="screen" title="geocities" />
 {% endstylesheets %}
 {% endblock head_style %}
 
@@ -72,6 +78,7 @@
         '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-typeahead.js'
         '@MopaBootstrapBundle/Resources/public/js/mopabootstrap-collection.js'
         '@MopaBootstrapBundle/Resources/public/js/mopabootstrap-subnav.js'
+        '../app/Resources/public/js/konami.js'
     %}
 <script type="text/javascript" src="{{ asset_url }}"></script>
 {% endjavascripts %}

@@ -1,4 +1,4 @@
-// Cosmo 2.2.2
+// Swatch 2.3.1
 // Variables
 // --------------------------------------------------
 
@@ -10,52 +10,52 @@
 // Grays
 // -------------------------
 @black:                 #000;
-@grayDarker:            #080808;
-@grayDark:              #999;
-@gray:                  #bbb;
-@grayLight:             #dfdfdf;
+@grayDarker:            #222;
+@grayDark:              #333;
+@gray:                  #555;
+@grayLight:             #999;
 @grayLighter:           #eee;
 @white:                 #fff;
 
 
 // Accent colors
 // -------------------------
-@blue:                  #4385B2;
-@blueDark:              #024C8E;
-@green:                 #3FB618;
-@red:                   #FF0039;
-@yellow:                #FFA500;
-@orange:                #FF7518;
-@pink:                  #E671B8;
-@purple:                #9954BB;
+@blue:                  #0000ff;
+@blueDark:              #000099;
+@green:                 #00ff00;
+@red:                   #ff0000;
+@yellow:                #ffff00;
+@orange:                #ffaa00;
+@pink:                  #ff00ff;
+@purple:                #aa00ff;
 
 
 // Scaffolding
 // -------------------------
-@bodyBackground:        @white;
-@textColor:             #555;
+@bodyBackground:        blue;
+@textColor:             #ffff00;
 
 
 // Links
 // -------------------------
-@linkColor:             @blue;
-@linkColorHover:        darken(@linkColor, 10%);
+@linkColor:             #00EEEE;
+@linkColorHover:        #00EEEE;
 
 
 // Typography
 // -------------------------
-@sansFontFamily:        "Open Sans", Calibri, Candara, Arial, sans-serif;
-@serifFontFamily:       Georgia, "Times New Roman", Times, serif;
-@monoFontFamily:        Monaco, Menlo, Consolas, "Courier New", monospace;
+@sansFontFamily:        "Comic Sans", "Comic Sans MS", "Chalkboard", "ChalkboardSE-Regular", "Marker Felt", "Purisa", "URW Chancery L", cursive, sans-serif;
+@serifFontFamily:       "Times New Roman", Times, serif;
+@monoFontFamily:        "Courier New", Courier, monospace;
 
-@baseFontSize:          14px;
+@baseFontSize:          16px;
 @baseFontFamily:        @sansFontFamily;
 @baseLineHeight:        20px;
 @altFontFamily:         @serifFontFamily;
 
 @headingsFontFamily:    inherit; // empty to use BS default, @baseFontFamily
-@headingsFontWeight:    300;    // instead of browser default, bold
-@headingsColor:         @grayDarker; // empty to use BS default, @textColor
+@headingsFontWeight:    bold;    // instead of browser default, bold
+@headingsColor:         inherit; // empty to use BS default, @textColor
 
 
 // Component sizing
@@ -66,54 +66,54 @@
 @fontSizeSmall:         @baseFontSize * 0.85; // ~12px
 @fontSizeMini:          @baseFontSize * 0.75; // ~11px
 
-@paddingLarge:          22px 30px; // 66px
+@paddingLarge:          11px 19px; // 44px
 @paddingSmall:          2px 10px;  // 26px
-@paddingMini:           2px 6px;   // 24px
+@paddingMini:           1px 6px;   // 24px
 
-@baseBorderRadius:      0px;
-@borderRadiusLarge:     0px;
-@borderRadiusSmall:     0px;
+@baseBorderRadius:      none;
+@borderRadiusLarge:     none;
+@borderRadiusSmall:     none;
 
 
 // Tables
 // -------------------------
 @tableBackground:                   transparent; // overall background-color
-@tableBackgroundAccent:             #f9f9f9; // for striping
-@tableBackgroundHover:              #E8F8FD; // for hover
-@tableBorder:                       #ddd; // table and cell border
+@tableBackgroundAccent:             black; // for striping
+@tableBackgroundHover:              blue; // for hover
+@tableBorder:                       green; // table and cell border
 
 // Buttons
 // -------------------------
-@btnBackground:                     @grayLighter;
-@btnBackgroundHighlight:            darken(@grayLighter, 15%);
+@btnBackground:                     darken(@white, 10%);
+@btnBackgroundHighlight:            darken(@white, 10%);
 @btnBorder:                         #bbb;
 
-@btnPrimaryBackground:              lighten(@blue, 5%);
-@btnPrimaryBackgroundHighlight:     darken(@blue, 5%);
+@btnPrimaryBackground:              @linkColor;
+@btnPrimaryBackgroundHighlight:     @linkColor;
 
-@btnInfoBackground:                 lighten(@purple, 5%);
-@btnInfoBackgroundHighlight:        darken(@purple, 5%);
+@btnInfoBackground:                 #00ffff;
+@btnInfoBackgroundHighlight:        @btnInfoBackground;
 
-@btnSuccessBackground:              lighten(@green, 5%);
-@btnSuccessBackgroundHighlight:     darken(@green, 5%);
+@btnSuccessBackground:              #00ff00;
+@btnSuccessBackgroundHighlight:     @btnSuccessBackground;
 
-@btnWarningBackground:              lighten(@orange, 5%);
-@btnWarningBackgroundHighlight:     darken(@orange, 5%);
+@btnWarningBackground:              @orange;
+@btnWarningBackgroundHighlight:     @orange;
 
-@btnDangerBackground:               lighten(@red, 5%);
-@btnDangerBackgroundHighlight:      darken(@red, 5%);
+@btnDangerBackground:               #ff0000;
+@btnDangerBackgroundHighlight:      @btnDangerBackground;
 
-@btnInverseBackground:              lighten(@black, 5%);
-@btnInverseBackgroundHighlight:     darken(@black, 5%);
+@btnInverseBackground:              black;
+@btnInverseBackgroundHighlight:     black;
 
 
 // Forms
 // -------------------------
-@inputBackground:               @white;
-@inputBorder:                   @gray;
-@inputBorderRadius:             @baseBorderRadius;
-@inputDisabledBackground:       @grayLighter;
-@formActionsBackground:         #f5f5f5;
+@inputBackground:               black;
+@inputBorder:                   #00ff00;
+@inputBorderRadius:             0;
+@inputDisabledBackground:       #cccccc;
+@formActionsBackground:         blue;
 @inputHeight:                   @baseLineHeight + 10px; // base line-height + 8px vertical padding + 2px top/bottom border
 
 
@@ -126,9 +126,9 @@
 
 @dropdownLinkColor:             @grayDark;
 @dropdownLinkColorHover:        @white;
-@dropdownLinkColorActive:       @white;
+@dropdownLinkColorActive:       @dropdownLinkColor;
 
-@dropdownLinkBackgroundActive:  @blue;
+@dropdownLinkBackgroundActive:  @linkColor;
 @dropdownLinkBackgroundHover:   @dropdownLinkBackgroundActive;
 
 
@@ -151,13 +151,13 @@
 
 // Sprite icons path
 // -------------------------
-@iconSpritePath:          "../img/glyphicons-halflings.png";
-@iconWhiteSpritePath:     "../img/glyphicons-halflings-white.png";
+@iconSpritePath:          "../../img/glyphicons-halflings.png";
+@iconWhiteSpritePath:     "../../img/glyphicons-halflings-white.png";
 
 
 // Input placeholder text color
 // -------------------------
-@placeholderText:         @gray;
+@placeholderText:         @grayLight;
 
 
 // Hr border color
@@ -172,7 +172,7 @@
 
 // Wells
 // -------------------------
-@wellBackground:                  lighten(@grayLighter, 2%);
+@wellBackground:                  black;
 
 
 // Navbar
@@ -180,45 +180,45 @@
 @navbarCollapseWidth:             979px;
 @navbarCollapseDesktopWidth:      @navbarCollapseWidth + 1;
 
-@navbarHeight:                    50px;
-@navbarBackgroundHighlight:       lighten(@grayDarker, 10%);
-@navbarBackground:                @grayDarker;
-@navbarBorder:                    transparent;
+@navbarHeight:                    40px;
+@navbarBackgroundHighlight:       black;
+@navbarBackground:                black;
+@navbarBorder:                    darken(@navbarBackground, 12%);
 
-@navbarText:                      @white;
-@navbarLinkColor:                 @white;
-@navbarLinkColorHover:            @gray;
-@navbarLinkColorActive:           @white;
-@navbarLinkBackgroundHover:       rgba(0, 0, 0, 0.05);
-@navbarLinkBackgroundActive:      transparent;
+@navbarText:                      #ff00ff;
+@navbarLinkColor:                 #00ff00;
+@navbarLinkColorHover:            @grayDark;
+@navbarLinkColorActive:           @gray;
+@navbarLinkBackgroundHover:       transparent;
+@navbarLinkBackgroundActive:      darken(@navbarBackground, 5%);
 
 @navbarBrandColor:                @navbarLinkColor;
 
 // Inverted navbar
-@navbarInverseBackground:                lighten(@gray, 20%);
-@navbarInverseBackgroundHighlight:       @navbarInverseBackground;
-@navbarInverseBorder:                    transparent;
+@navbarInverseBackground:                #ff00ff;
+@navbarInverseBackgroundHighlight:       #ff00ff;
+@navbarInverseBorder:                    green;
 
-@navbarInverseText:                      @grayDark;
-@navbarInverseLinkColor:                 @grayDarker;
-@navbarInverseLinkColorHover:            @grayDarker;
-@navbarInverseLinkColorActive:           @navbarInverseLinkColorHover;
-@navbarInverseLinkBackgroundHover:       rgba(0, 0, 0, 0.05);
+@navbarInverseText:                      black;
+@navbarInverseLinkColor:                 blue;
+@navbarInverseLinkColorHover:            blue;
+@navbarInverseLinkColorActive:           blue;
+@navbarInverseLinkBackgroundHover:       transparent;
 @navbarInverseLinkBackgroundActive:      @navbarInverseBackground;
 
 @navbarInverseSearchBackground:          lighten(@navbarInverseBackground, 25%);
 @navbarInverseSearchBackgroundFocus:     @white;
 @navbarInverseSearchBorder:              @navbarInverseBackground;
-@navbarInverseSearchPlaceholderColor:    @grayDark;
+@navbarInverseSearchPlaceholderColor:    #ccc;
 
 @navbarInverseBrandColor:                @navbarInverseLinkColor;
 
 
 // Pagination
 // -------------------------
-@paginationBackground:                @grayLight;
-@paginationBorder:                    transparent;
-@paginationActiveBackground:          @blue;
+@paginationBackground:                #fff;
+@paginationBorder:                    #ddd;
+@paginationActiveBackground:          #f5f5f5;
 
 
 // Hero unit
@@ -230,21 +230,21 @@
 
 // Form states and alerts
 // -------------------------
-@warningText:             @white;
-@warningBackground:       @orange;
-@warningBorder:           transparent;
+@warningText:             black;
+@warningBackground:       yellow;
+@warningBorder:           red;
 
-@errorText:               @white;
-@errorBackground:         @red;
-@errorBorder:             transparent;
+@errorText:               white;
+@errorBackground:         red;
+@errorBorder:             #aa0000;
 
-@successText:             @white;
-@successBackground:       @green;
-@successBorder:           transparent;
+@successText:             white;
+@successBackground:       green;
+@successBorder:           #00aa00;
 
-@infoText:                @white;
-@infoBackground:          @purple;
-@infoBorder:              transparent;
+@infoText:                black;
+@infoBackground:          #00ffff;
+@infoBorder:              #aaaa00;
 
 
 // Tooltips and popovers
@@ -254,14 +254,14 @@
 @tooltipArrowWidth:       5px;
 @tooltipArrowColor:       @tooltipBackground;
 
-@popoverBackground:       @orange;
-@popoverArrowWidth:       15px;
-@popoverArrowColor:       @orange;
-@popoverTitleBackground:  @orange;
+@popoverBackground:       #fff;
+@popoverArrowWidth:       10px;
+@popoverArrowColor:       #fff;
+@popoverTitleBackground:  darken(@popoverBackground, 3%);
 
 // Special enhancement for popovers
 @popoverArrowOuterWidth:  @popoverArrowWidth + 1;
-@popoverArrowOuterColor:  transparent;
+@popoverArrowOuterColor:  rgba(0,0,0,.25);
 
 
 
@@ -272,12 +272,12 @@
 // Default 940px grid
 // -------------------------
 @gridColumns:             12;
-@gridColumnWidth:         55px;
+@gridColumnWidth:         60px;
 @gridGutterWidth:         20px;
 @gridRowWidth:            (@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1));
 
 // 1200px min
-@gridColumnWidth1200:     55px;
+@gridColumnWidth1200:     70px;
 @gridGutterWidth1200:     30px;
 @gridRowWidth1200:        (@gridColumns * @gridColumnWidth1200) + (@gridGutterWidth1200 * (@gridColumns - 1));
 
