@@ -1,8 +1,16 @@
 $(document).ready(function() {
     function toggleAltStyle() {
-      $('link[@rel*=style][title]').each(function(i)
+      // note this ham-handedly toggles *ALL* alt-styles
+      $('link[rel*=stylesheet]').each(function(i)
       {
-         this.disabled = !this.disabled;
+        if (this.rel == "stylesheet") {
+            this.rel = "alternate stylesheet";
+            this.disabled = true;
+        }
+        else if (this.rel == "alternate stylesheet") {
+            this.rel = "stylesheet";
+            this.disabled = false;
+        }
       });
     }
 
@@ -20,6 +28,8 @@ $(document).ready(function() {
 
 
     $("html").keyup(function(event) {
+        console.log("Received " + event.which);
+        console.log("Looking for " + konamiCode[nextIndex]);
         if (event.which === konamiCode[nextIndex]) {
             nextIndex++;
 
