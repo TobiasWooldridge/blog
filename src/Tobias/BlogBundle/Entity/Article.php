@@ -91,7 +91,7 @@ class Article implements RoutedItemInterface
      * @ORM\Column(type="string", length=32)
      * @Assert\NotNull()
      */
-    private $hash;
+    private $hash = 0;
 
 
     /**
